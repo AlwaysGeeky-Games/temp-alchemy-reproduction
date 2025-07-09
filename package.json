@@ -1,0 +1,26 @@
+{
+  "name": "alchemy-reproduction-real",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n \"marketplace,login\" -c \"blue,green\" \"cd marketplace && npm run dev\" \"cd login && npm run dev\"",
+    "dev:marketplace": "cd marketplace && npm run dev",
+    "dev:login": "cd login && npm run dev",
+    "build": "concurrently \"cd marketplace && npm run build\" \"cd login && npm run build\"",
+    "install:all": "rm -rf ./marketplace/node_modules ./login/node_modules && npm install && cd marketplace && npm install && cd ../login && npm install",
+    "test": "concurrently \"cd marketplace && npm test\" \"cd login && npm test\"",
+    "test:marketplace": "cd marketplace && npm test",
+    "test:login": "cd login && npm test",
+    "lint": "concurrently \"cd marketplace && npm run lint\" \"cd login && npm run lint\"",
+    "lint:marketplace": "cd marketplace && npm run lint",
+    "lint:login": "cd login && npm run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "marketplace",
+    "login"
+  ]
+}
